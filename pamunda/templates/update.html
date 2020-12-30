@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content%}
+
+{% if user.is_authenticated %}
+{% if user.is_active and user.is_staff %}
+<form action=""
+method='POST' enctype="multipart/form-data">{% csrf_token %}
+    {{form.as_p}}
+    {{form.media}}
+    <input type='submit' value='Update'>
+
+</form>
+{%else %}
+<p>You cannot view this page</p>
+{% endif %}
+{% endif %}
+
+{% endblock %}

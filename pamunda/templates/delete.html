@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+{% if user.is_authenticated %}
+{% if user.is_active and user.is_staff %}
+    
+<form method='POST'>{% csrf_token %}
+    <p>Are you sure you want to delete?</p>
+    <button type="submit" class="btn btn-danger">yes</button> 
+    <a href="{% url 'detail' obj.pk %}">Cancel</a>  
+</form>
+{%else %}
+<p>You cannot view this page</p>
+{% endif %}
+{% endif %}
+{% endblock %}

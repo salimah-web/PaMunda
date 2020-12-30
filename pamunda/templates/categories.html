@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% if obj_cat %}
+<ul>
+    <h2>{{cats}}</h2>
+    {% for i in catss %}
+    
+    <img src="{{ i.images.url }}" height="400" width="800">
+    {% endfor %}
+    {% for product in obj_cat %}
+    
+    <h3><a href="{% url 'detail' product.pk %}">{{product.Product_name}}</a>
+    </h3>
+      
+    
+        measurement_scale: {{product.measurement_scale}}<br>
+        price_per_Scale: {{product.price_per_Scale}}<br>
+        location: {{product.location}}
+        
+    {% endfor %}
+</ul>
+{% else %}
+<p>We are sorry, we have no products in this category...Check back soon</p>
+{% endif %}
+{% endblock %}

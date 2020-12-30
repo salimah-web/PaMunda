@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<ul>
+    
+        <li class='box'>
+           </li>
+
+   
+    
+</ul>
+<div class="container">
+    <div class="row">
+        {% for product in object_list %}
+      <div class="col-sm">
+        <div class="card" style="width: 18rem;">
+            {% if product.image %}
+            <img src="{{ product.image.url }}" class="card-img-top" alt="..." width="200" height="200">
+            {% endif %}
+            <div class="card-body">
+        <h5 >{{product.Product_name}}</h5>
+        <p class="card-text">measurement_scale: {{product.measurement_scale}}<br>
+            price_per_Scale: {{product.price_per_Scale}}<br>
+            location: {{product.location}}</p>
+            <a href="{% url 'detail' product.pk %}" class="btn btn-primary stretched-link">Get details</a>
+        </div>
+      </div>
+    </div>
+      {% endfor %}
+      
+           
+         
+      
+
+    </div>
+  </div>
+{% endblock %}

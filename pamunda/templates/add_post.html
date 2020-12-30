@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content%}
+{% if user.is_authenticated %}
+<form method='POST' enctype="multipart/form-data">{% csrf_token %}
+    {{form.as_p}}
+    {{form.media}}
+    <button type="submit" class="btn btn-primary">Post</button>
+</form>
+{% else %}
+You cannot view this page if you are not a member
+{% endif %}
+{% endblock %}

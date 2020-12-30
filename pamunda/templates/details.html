@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<h1>Product details</h1>
+<h2>{{obj.Product_name}}</h2>
+<br><hr>
+{% if obj.image %}
+<img src="{{ obj.image.url }}" height="200" width="200"><hr>
+{% endif %}
+<h6>category: {{obj.category}}</h6>
+<h6>measurement_scale: {{obj.measurement_scale}}</h6>
+<h6>price_per_Scale: {{obj.price_per_Scale}}</h6>
+<h6>Quantity_available: {{obj.Quantity_available}}</h6>
+{% if user.is_authenticated %}
+{% if user.is_active and user.is_staff %}
+    <a href="{% url 'delete' obj.pk %}" class="btn btn-danger"> Delete</a>
+    <a href="{% url 'update' obj.pk %}" class="btn btn-secondary"> Edit</a>
+        
+    
+
+<br><hr>
+    {% endif %}
+{% endif %}
+<h6>Contact info</h6>
+{% if obj.username.email %}
+<p>Phone no:<a>{{obj.phone_number}}</a></p>
+<p>Location: {{obj.location}}</p>
+<p>E-mail: {{obj.username.email}}</p>
+{% endif %}
+<hr>
+<form action="/details/{{obj.pk}}/trans" method="POST">{% csrf_token %}
+    <button type="submit" class="btn btn-success">Make Order</button>
+</form>
+
+
+{% endblock %}

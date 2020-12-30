@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2>We seek to bridge a gap in the agricultural sector....</h2>
+    
+    
+    <ul>
+        {% for foods in food %}
+        <li>
+            <h4><a href="{% url 'category' foods.name  %}">{{foods.name}}</a></h4><br>
+            <img src="{{ foods.images.url }}" height="400" width="1000"><hr>
+            
+        </li>
+        {% endfor %}
+        
+    </ul>
+    <style>
+        .footer {
+            
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: rgb(26, 24, 24);
+            color: white;
+            text-align: center;
+         
+         
+          
+         
+        }
+        </style>
+    
+
+    
+        <p>
+            <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                About us
+            </a>
+            
+          </p>
+          <div class="collapse" id="collapseExample">
+            <div class="card card-body">
+                Surveys show that post-harvest food losses in some communities in Nigeria could be as much as 20-30% of total grain production and 30-50% for roots and tubers. A high percentage of fruits and vegetables are lost as they are highly perishable; even a substantial amount is lost during storage. By implication, billions of naira will be lost due to these post-harvest food losses. Also, these food shortages could  lead to hunger and starvation as the needed quota to meet people's feeding needs will not be met. Little wonder, the cost of feeding continues to rise daily.</p>
+                <P>Therefore, we are committed to bridging the gap between farmers and consumers to prevent food wastage. We achieve this by reaching out to interested consumers, so that they can place orders for food items that they might be interested in. We have a list of farmers that grow various food crops which we connect to customers in need of these food crops once they have been harvested. This way, we align ourselves with the United Nations Sustainable Development Goal 2(UNSDG2), which is Zero Hunger.</P>
+                 </div>
+          </div><hr>
+          <div class="footer">
+        <h2>Contact us</h2>
+        
+        <a href="https://twitter.com/__saalimaah?s=08">Twitter</a><br><br>
+        <p>Email: <a href="#">salimaaomari@gmail.com</a></p>
+    
+</div>
+
+
+{% endblock %}
